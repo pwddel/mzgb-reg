@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from const import FIO, PHONE, EMAIL, TEAM_NAME, COMMENT
 
 options = webdriver.ChromeOptions()
 caps = DesiredCapabilities().CHROME
@@ -14,11 +15,6 @@ browser = webdriver.Chrome('chromedriver',desired_capabilities=caps, chrome_opti
 browser.get('https://bar.mzgb.net')
 browser.maximize_window()
 
-FIO = "Вася Пупкин" 
-PHONE = "+37529754351"
-EMAIL = "test@test.com"
-TEAM_NAME = "super team"
-COMMENT = "comment"
 
 try:
     wait = WebDriverWait(browser, 10)
@@ -37,7 +33,7 @@ finally:
     print("Second button pressed")
 
 try:
-    wait = WebDriverWait(browser, 2)
+    wait = WebDriverWait(browser, 10)
     fio = wait.until(
         EC.visibility_of_element_located((By.ID, "fio")))
     phone = wait.until(
@@ -88,5 +84,5 @@ try:
         EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[3]/div/div/div[2]/div/div[5]/button')))
     button.click()
 finally:
-    print("Fourth button pressed")
+    print("Final button pressed")
 
